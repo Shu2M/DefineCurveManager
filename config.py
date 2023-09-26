@@ -6,6 +6,7 @@ import os
 import abc
 import json
 import types
+import typing
 
 CONFIG_PARAMS_DISPATCH_DICT = types.MappingProxyType({
     'keyfile_path': str,
@@ -27,8 +28,26 @@ class ConfigFileManager(abc.ABC):
         """
         self.path = path
 
+    def read(self, key: str) -> typing.Any:
+        """Метод чтения параметра по ключю.
+
+        Если не удается найти ключ, вернет None
+        Args:
+            key: имя параметра в конфиг файле
+
+        Returns:
+            значение параметра по ключу key
+        """
+        param_value = None
+        if key in CONFIG_PARAMS_DISPATCH_DICT:
+            config_dict = self.read_all()
+            param_value = CONFIG_PARAMS_DISPATCH_DICT.get(key)(
+                config_dict[key],
+            )
+        return param_value
+
     @abc.abstractmethod
-    def read(self) -> dict:
+    def read_all(self) -> dict:
         """Метод чтения параметров файла конфигурации в словарь.
 
         Если не удается найти файл, создает дефолтный приватным методом
@@ -82,7 +101,7 @@ class ConfigFileManager(abc.ABC):
 class ConfigJson(ConfigFileManager):
     """Реализация класса ConfigFileManager для чтения из json."""
 
-    def read(self) -> dict:
+    def read_all(self) -> dict:
         """Метод чтения файла конфигурации в формате json.
 
         Returns:
@@ -104,11 +123,13 @@ class ConfigJson(ConfigFileManager):
         Args:
             **kwargs: параметры для обновления или дополнения
         """
-        config_params = self.read()
+        config_params = self.read_all()
         for key, new_param_value in kwargs.items():
             if key in CONFIG_PARAMS_DISPATCH_DICT:
                 config_params.update(
-                    {key: CONFIG_PARAMS_DISPATCH_DICT[key](new_param_value)},
+                    {key: CONFIG_PARAMS_DISPATCH_DICT.get(key)(
+                        new_param_value,
+                    )},
                 )
 
         with open(self.path, 'w') as config_file:
@@ -126,7 +147,7 @@ class ConfigJson(ConfigFileManager):
 class ConfigTxt(ConfigFileManager):
     """Реализация класса ConfigFileManager для чтения из txt."""
 
-    def read(self) -> dict:
+    def read_all(self) -> typing.Any:
         """Метод чтения файла конфигурации в формате txt.
 
         Returns:
@@ -151,12 +172,13 @@ class ConfigTxt(ConfigFileManager):
         Args:
             **kwargs: параметры для обновления или дополнения
         """
-        config_params = self.read()
-
+        config_params = self.read_all()
         for key, new_param_value in kwargs.items():
             if key in CONFIG_PARAMS_DISPATCH_DICT:
                 config_params.update(
-                    {key: CONFIG_PARAMS_DISPATCH_DICT[key](new_param_value)},
+                    {key: CONFIG_PARAMS_DISPATCH_DICT.get(key)(
+                        new_param_value,
+                    )},
                 )
 
         with open(self.path, 'w') as config_file:
