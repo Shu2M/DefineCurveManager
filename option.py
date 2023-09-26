@@ -30,8 +30,8 @@ class Option(object):
         self.prep_call = prep_call
         self.success_message = success_message
 
-    def choose(self):
-        """Метод выбора опции.
+    def execute(self):
+        """Метод выполенения опции.
 
         Запускает выполнение комманды, находящейся в опции
         """
