@@ -40,6 +40,9 @@ class Option(object):
             additional_data=additional_data,
         )
 
+        if status:
+            print(self.success_message.format(result=command_result))
+
     def __repr__(self):
         """Дандер метод для конвертирования объектов в строку.
 
