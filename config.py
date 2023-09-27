@@ -68,10 +68,6 @@ class ConfigFileManager(abc.ABC):
     def update(self, **kwargs):
         """Метод обновления значений в файле конфигурации.
 
-        Метод читает файл конфигруации в словарь с помощью метода self.read,
-        обновляет его с помощью метода словаря update и сохраняет по пути
-        self.path
-
         Args:
             **kwargs: параметры для обновления или дополнения
 
@@ -83,6 +79,27 @@ class ConfigFileManager(abc.ABC):
             'Наследник класса ConfigFileManager должен реализовать метод '
             + 'update',
         )
+
+    def _update_config_params(self, **kwargs) -> dict:
+        """Метод обновелния файла конфигурации согласно правилам.
+
+        Метод читает файл конфигруации в словарь с помощью метода self.read,
+        обновляет его с помощью метода словаря update
+        Args:
+            **kwargs: параметры для обновления или дополнения
+
+        Returns:
+             обновленный словарь конфиг файла
+        """
+        config_params = self.read_all()
+        for key, new_param_value in kwargs.items():
+            if key in CONFIG_PARAMS_DISPATCH_DICT:
+                config_params.update(
+                    {key: CONFIG_PARAMS_DISPATCH_DICT.get(key)(
+                        new_param_value,
+                    )},
+                )
+        return config_params
 
     @abc.abstractmethod
     def _create(self):
@@ -123,15 +140,7 @@ class ConfigJson(ConfigFileManager):
         Args:
             **kwargs: параметры для обновления или дополнения
         """
-        config_params = self.read_all()
-        for key, new_param_value in kwargs.items():
-            if key in CONFIG_PARAMS_DISPATCH_DICT:
-                config_params.update(
-                    {key: CONFIG_PARAMS_DISPATCH_DICT.get(key)(
-                        new_param_value,
-                    )},
-                )
-
+        config_params = self._update_config_params(**kwargs)
         with open(self.path, 'w') as config_file:
             json.dump(config_params, config_file)
 
@@ -172,15 +181,7 @@ class ConfigTxt(ConfigFileManager):
         Args:
             **kwargs: параметры для обновления или дополнения
         """
-        config_params = self.read_all()
-        for key, new_param_value in kwargs.items():
-            if key in CONFIG_PARAMS_DISPATCH_DICT:
-                config_params.update(
-                    {key: CONFIG_PARAMS_DISPATCH_DICT.get(key)(
-                        new_param_value,
-                    )},
-                )
-
+        config_params = self._update_config_params(**kwargs)
         with open(self.path, 'w') as config_file:
             for key, param_value in config_params.items():
                 config_file.write(
