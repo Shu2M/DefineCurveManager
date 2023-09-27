@@ -6,8 +6,8 @@
 import abc
 import typing
 
-import config
 import menus
+import settings
 
 
 class Command(abc.ABC):
@@ -50,7 +50,7 @@ class SetKeyFilePathCommand(Command):
         Returns:
             статус, результат команды
         """
-        config.CONFIG_FILE.update(keyfile_path=additional_data)
+        settings.CONFIG_FILE.update(keyfile_path=additional_data)
         return True, None
 
 
@@ -69,7 +69,7 @@ class ShowKeyFilePathCommand(Command):
         Returns:
             статус, результат команды
         """
-        return True, config.CONFIG_FILE.read('keyfile_path')
+        return True, settings.CONFIG_FILE.read('keyfile_path')
 
 
 class GoToCurveRedactorMenuCommand(Command):
