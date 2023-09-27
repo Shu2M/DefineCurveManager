@@ -195,3 +195,6 @@ class ConfigTxt(ConfigFileManager):
                 config_file.write(
                     '{key}=\n'.format(key=key),
                 )
+
+
+CONFIG_FILE = ConfigTxt('config.txt')
