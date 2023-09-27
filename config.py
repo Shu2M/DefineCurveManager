@@ -2,9 +2,9 @@
 
 Предоставляет абстрактный класс менеджера файла конфигурации и его реализации
 """
-import os
 import abc
 import json
+import os
 import types
 import typing
 
@@ -32,6 +32,7 @@ class ConfigFileManager(abc.ABC):
         """Метод чтения параметра по ключю.
 
         Если не удается найти ключ, вернет None
+
         Args:
             key: имя параметра в конфиг файле
 
@@ -52,8 +53,6 @@ class ConfigFileManager(abc.ABC):
 
         Если не удается найти файл, создает дефолтный приватным методом
         _create
-        Returns:
-            словарь с параметрами файла конфигурации
 
         Raises:
             NotImplementedError: Наследник класса ConfigFileManager должен
@@ -85,6 +84,7 @@ class ConfigFileManager(abc.ABC):
 
         Метод читает файл конфигруации в словарь с помощью метода self.read,
         обновляет его с помощью метода словаря update
+
         Args:
             **kwargs: параметры для обновления или дополнения
 
@@ -137,6 +137,7 @@ class ConfigJson(ConfigFileManager):
 
         Дополняет или перезаписывает значения в существующем файле значениями
         из **kwargs, а заетем сохраняет в формате json
+
         Args:
             **kwargs: параметры для обновления или дополнения
         """
@@ -178,6 +179,7 @@ class ConfigTxt(ConfigFileManager):
 
         Дополняет или перезаписывает значения в существующем файле значениями
         из **kwargs, а заетем сохраняет в формате txt
+
         Args:
             **kwargs: параметры для обновления или дополнения
         """
