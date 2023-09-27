@@ -7,8 +7,7 @@ import abc
 import typing
 
 import config
-
-CONFIG_FILE = config.ConfigTxt('config.txt')
+import menus
 
 
 class Command(abc.ABC):
@@ -51,7 +50,7 @@ class SetKeyFilePathCommand(Command):
         Returns:
             статус, результат команды
         """
-        CONFIG_FILE.update(keyfile_path=additional_data)
+        config.CONFIG_FILE.update(keyfile_path=additional_data)
         return True, None
 
 
@@ -70,4 +69,99 @@ class ShowKeyFilePathCommand(Command):
         Returns:
             статус, результат команды
         """
-        return True, CONFIG_FILE.read('keyfile_path')
+        return True, config.CONFIG_FILE.read('keyfile_path')
+
+
+class GoToCurveRedactorMenuCommand(Command):
+    """Команда перехода в другое меню."""
+
+    def execute(
+        self,
+        additional_data: typing.Any,
+    ):
+        """Метод исполнения команды.
+
+        Возвращает в качестве статуса False для того, чтобы информация о
+        результате работы команды не обрабатывалась после завершения
+        цикла нового вложенного меню CurveRedactorMenu
+
+        Args:
+            additional_data: дополнительные данные (не требуются)
+
+        Returns:
+            статус, результат команды
+        """
+        menus.CurveRedactorMenu().loop()
+        return False, None
+
+
+class BackMenuCommand(Command):
+    """Команда завершения цикла текущего меню."""
+
+    def execute(
+        self,
+        additional_data: typing.Any,
+    ):
+        """Метод исполнения команды.
+
+        Args:
+            additional_data: дополнительные данные (не требуются)
+
+        Raises:
+            ExitException: исключение выхода из цикла меню
+        """
+        raise menus.ExitException
+
+
+class SetCurveByRange(Command):
+    """Команда записи/добавления кривой по укзанному промежутку."""
+
+    def execute(
+        self,
+        additional_data: typing.Any,
+    ):
+        """Метод исполнения команды.
+
+        Args:
+            additional_data: дополнительные данные
+
+        Returns:
+            статус, результат команды
+        """
+        return True, None
+
+
+class SetCurveByHand(Command):
+    """Команда ручной записи значений кривой в curve."""
+
+    def execute(
+        self,
+        additional_data: typing.Any,
+    ):
+        """Метод исполнения команды.
+
+        Args:
+            additional_data: дополнительные данные
+
+        Returns:
+            статус, результат команды
+        """
+        return True, None
+
+
+class SetCurveByLsPrePost(Command):
+    """Команда добавления кривой из другого k файла."""
+
+    def execute(
+        self,
+        additional_data: typing.Any,
+    ):
+        """Метод исполнения команды.
+
+        Args:
+            additional_data: дополнительные данные
+
+        Returns:
+            статус, результат команды
+        """
+        return True, None
