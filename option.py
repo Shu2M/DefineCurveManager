@@ -2,6 +2,7 @@
 
 Реализует логику работы с опциями в меню и подменю
 """
+import sys
 import typing
 
 import commands
@@ -33,7 +34,8 @@ class Option(object):
     def execute(self):
         """Метод выполенения опции.
 
-        Запускает выполнение комманды, находящейся в опции
+        Запускает выполнение комманды, находящейся в опции и печатает
+        результат выполнения этой команды если тот успешно завершился
         """
         additional_data = self.prep_call() if self.prep_call else None
         status, command_result = self.command.execute(
@@ -41,18 +43,28 @@ class Option(object):
         )
 
         if status:
-            print(self.success_message.format(result=command_result))
+            print_execute_result(self.success_message, command_result)
 
-    def __repr__(self):
+    def __str__(self):
         """Дандер метод для конвертирования объектов в строку.
 
         Returns:
-             Строку с описанием объекта Option
+            Строку с именем объекта Option из атрибута name
         """
-        return '\n'.join([
-            '{class_name}:'.format(class_name=self.__class__.__name__),
-            'name: {name}'.format(name=self.name),
-            'command: {command!r}'.format(command=self.command),
-            'prep_call: {prep_call}'.format(prep_call=self.prep_call),
-            'success_message: {suc_msg}'.format(suc_msg=self.success_message),
-        ])
+        return self.name
+
+
+def print_execute_result(
+    message: str,
+    command_result: typing.Any,
+):
+    """Функция принта в консоль вывода успешно выполненной операции.
+
+    Args:
+        message: сообщение которое будет выведено в консоль
+        command_result: рузультат работы команды
+    """
+    sys.stdout.write(message.format(result=command_result))
+    sys.stdout.write('\n')
+    sys.stdout.write('\nНажмите ENTER для возврата в меню...')
+    sys.stdin.readline()
