@@ -5,7 +5,7 @@
 import sys
 import typing
 
-from source.commands import commands
+from source.commands.command import Command
 
 
 class Option(object):
@@ -14,7 +14,7 @@ class Option(object):
     def __init__(
         self,
         name: str,
-        command: commands.Command,
+        command: Command,
         prep_call: typing.Callable = None,
         success_message: str = '{result}',
     ):
