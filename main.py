@@ -1,10 +1,10 @@
 """Точка входа программы."""
-from source.menus import menus
+from source.menus.main_menu import MainMenu
 
 
 def main():
     """Функция запуска программы."""
-    menus.MainMenu().loop()
+    MainMenu().loop()
 
 
 if __name__ == '__main__':

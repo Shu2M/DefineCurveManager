@@ -6,7 +6,7 @@
 import abc
 import typing
 
-from source.menus import menus
+from source.menus.curve_menu import CurveMenu
 from source import exceptions
 import settings
 
@@ -92,7 +92,7 @@ class GoToCurveRedactorMenuCommand(Command):
         Returns:
             статус, результат команды
         """
-        menus.CurveRedactorMenu().loop()
+        CurveMenu().loop()
         return False, None
 
 
