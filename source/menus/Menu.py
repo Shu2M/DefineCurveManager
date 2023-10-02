@@ -2,7 +2,6 @@
 
 Определяет набор методов меню
 """
-import logging
 import os
 import sys
 
@@ -10,28 +9,10 @@ from source import exceptions
 import settings
 
 
-def get_logger():
-    """Функция создания и настройки режимов работы и вывода логгера.
-
-    Returns:
-        настроенный объект логгера
-    """
-    logger = logging.getLogger()
-    file_handler = logging.FileHandler(
-        filename=settings.LOGGER_FILE_PATH,
-        mode='a',
-    )
-    formatter = logging.Formatter(settings.LOGGER_FORMATTER_STRING)
-    file_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
-    logger.setLevel(logging.INFO)
-    return logger
-
-
 class Menu(object):
     """Класс для определения поведения меню."""
 
-    logger = get_logger()
+    logger = settings.LOGGER
 
     def __init__(self):
         """Метод инициализации меню."""
