@@ -1,8 +1,8 @@
 """Команда перехода в меню работы с данными кривой."""
 import typing
 
-from source.commands.command import Command
-from source.menus.curve_menu import CurveMenu
+from source.commands.Command import Command
+from source.menus.CurveMenu import CurveMenu
 
 
 class GoToCurveMenuCommand(Command):

@@ -1,11 +1,11 @@
 """."""
 import typing
 
-from source.commands.command import Command
+from source.commands.Command import Command
 
 
-class SetCurveByLsPrePost(Command):
-    """Команда добавления кривой из другого k файла."""
+class SetCurveByHand(Command):
+    """Команда ручной записи значений кривой в curve."""
 
     def execute(
         self,

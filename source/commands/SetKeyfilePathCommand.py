@@ -2,7 +2,7 @@
 import typing
 
 import settings
-from source.commands.command import Command
+from source.commands.Command import Command
 
 
 class SetKeyFilePathCommand(Command):

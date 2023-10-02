@@ -1,10 +1,11 @@
 """."""
 import typing
-from source.commands.command import Command
+
+from source.commands.Command import Command
 
 
-class SetCurveByRange(Command):
-    """Команда записи/добавления кривой по укзанному промежутку."""
+class SetCurveByLsPrePost(Command):
+    """Команда добавления кривой из другого k файла."""
 
     def execute(
         self,

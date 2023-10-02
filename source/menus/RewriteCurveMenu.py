@@ -1,7 +1,7 @@
 """Меню перезаписи curve в keyfile."""
-from source.menus.menu import Menu
-from source import option
-from source.commands.back_menu_command import BackMenuCommand
+from source.menus.Menu import Menu
+from source.Option import Option
+from source.commands.BackMenuCommand import BackMenuCommand
 
 
 class RewriteCurveMenu(Menu):
@@ -11,7 +11,7 @@ class RewriteCurveMenu(Menu):
         """Метод инициализации."""
         super().__init__()
         self.options = {
-            4: option.Option(
+            4: Option(
                 name='Назад',
                 command=BackMenuCommand(),
                 success_message='',

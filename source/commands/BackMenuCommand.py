@@ -1,7 +1,7 @@
 """Комана выхода из цикла меню."""
 import typing
 
-from source.commands.command import Command
+from source.commands.Command import Command
 from source import exceptions
 
 

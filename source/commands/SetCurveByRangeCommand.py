@@ -1,11 +1,10 @@
 """."""
 import typing
+from source.commands.Command import Command
 
-from source.commands.command import Command
 
-
-class SetCurveByHand(Command):
-    """Команда ручной записи значений кривой в curve."""
+class SetCurveByRange(Command):
+    """Команда записи/добавления кривой по укзанному промежутку."""
 
     def execute(
         self,
