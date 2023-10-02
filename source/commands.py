@@ -7,6 +7,7 @@ import abc
 import typing
 
 from source import menus
+from source import exceptions
 import settings
 
 
@@ -110,7 +111,7 @@ class BackMenuCommand(Command):
         Raises:
             ExitException: исключение выхода из цикла меню
         """
-        raise menus.ExitException
+        raise exceptions.ExitException
 
 
 class SetCurveByRange(Command):

@@ -8,6 +8,7 @@ import sys
 
 from source import commands
 from source import option
+from source import exceptions
 import settings
 
 
@@ -125,7 +126,7 @@ class Menu(object):
             selected_option = select_option(self.options)
             try:
                 selected_option.execute()
-            except ExitException:
+            except exceptions.ExitException:
                 break
             except Exception as exception:
                 input(
@@ -216,7 +217,3 @@ class CurveRedactorMenu(Menu):
                 success_message='',
             ),
         }
-
-
-class ExitException(Exception):
-    """Класс исключения для выхода из цикла меню."""
