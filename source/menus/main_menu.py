@@ -1,7 +1,7 @@
 """Модуль определения главного меню приложения."""
 from source.menus import menu
 from source import option
-from source import commands
+from source.commands import commands
 
 
 class MainMenu(menu.Menu):

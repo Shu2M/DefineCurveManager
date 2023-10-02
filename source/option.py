@@ -5,7 +5,7 @@
 import sys
 import typing
 
-from source import commands
+from source.commands import commands
 
 
 class Option(object):

@@ -1,7 +1,7 @@
 """Модуль определения меню работы с curve."""
 from source.menus.menu import Menu
 from source import option
-from source import commands
+from source.commands import commands
 
 
 class CurveMenu(Menu):
