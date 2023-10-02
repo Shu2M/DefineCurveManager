@@ -6,7 +6,7 @@
 import abc
 import typing
 
-import menus
+from source import menus
 import settings
 
 
