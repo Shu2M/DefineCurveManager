@@ -1,11 +1,11 @@
-"""Команда перехода в меню работы с данными кривой."""
+"""Команда перехода в меню создания новой curve."""
 import typing
 
 from source.commands.Command import Command
-from source.menus.CurveMenu import CurveMenu
+from source.menus.NewCurveMenu import NewCurveMenu
 
 
-class GoToCurveMenuCommand(Command):
+class GoToNewCurveMenuCommand(Command):
     """Команда перехода в другое меню."""
 
     def execute(
@@ -24,5 +24,5 @@ class GoToCurveMenuCommand(Command):
         Returns:
             статус, результат команды
         """
-        CurveMenu().loop()
+        NewCurveMenu().loop()
         return False, None

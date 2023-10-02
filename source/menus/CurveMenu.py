@@ -1,9 +1,9 @@
 """Модуль определения меню работы с curve."""
 from source.menus.Menu import Menu
 from source.Option import Option
-from source.commands.SetCurveByRangeCommand import SetCurveByRange
-from source.commands.SetCurveByHandCommand import SetCurveByHand
-from source.commands.SetCurveByLsprepostCommand import SetCurveByLsPrePost
+from source.commands.GoToExtendCurveMenuCommand import GoToExtendCurveMenuCommand
+from source.commands.GoToNewCurveMenuCommand import GoToNewCurveMenuCommand
+from source.commands.GoToRewriteCurveMenuCommand import GoToRewriteCurveMenuCommand
 from source.commands.BackMenuCommand import BackMenuCommand
 
 
@@ -15,19 +15,19 @@ class CurveMenu(Menu):
         super().__init__()
         self.options = {
             1: Option(
-                name='Задание границ',
-                command=SetCurveByRange(),
-                success_message='Команда пока не реализованна',
+                name='Дополнить',
+                command=GoToExtendCurveMenuCommand(),
+                success_message='',
             ),
             2: Option(
-                name='Добавление вручную по одному',
-                command=SetCurveByHand(),
-                success_message='Команда пока не реализованна',
+                name='Создать новую',
+                command=GoToNewCurveMenuCommand(),
+                success_message='',
             ),
             3: Option(
-                name='Через выбор элементов в Ls-prePost',
-                command=SetCurveByLsPrePost(),
-                success_message='Команда пока не реализованна',
+                name='Перезаписать',
+                command=GoToRewriteCurveMenuCommand(),
+                success_message='',
             ),
             4: Option(
                 name='Назад',

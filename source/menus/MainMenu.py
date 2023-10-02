@@ -26,7 +26,7 @@ class MainMenu(Menu):
                 success_message='Загруженный k файл находится в:\n{result}',
             ),
             3: Option(
-                name='Редактировать curve',
+                name='Curve',
                 command=GoToCurveMenuCommand(),
                 success_message='',
             ),
