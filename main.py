@@ -1,5 +1,5 @@
 """Точка входа программы."""
-from source import menus
+from source.menus import menus
 
 
 def main():
