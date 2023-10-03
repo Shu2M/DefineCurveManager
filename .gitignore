@@ -1,5 +1,6 @@
 config.txt
 log.log
+*.k
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
