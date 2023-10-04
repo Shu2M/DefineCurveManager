@@ -1,10 +1,11 @@
 """Модуль определения главного меню приложения."""
-from source.menus.Menu import Menu, get_user_input
+from source.menus.Menu import Menu
 from source.Option import Option
 from source.commands.SetKeyfilePathCommand import SetKeyFilePathCommand
 from source.commands.ShowKeyfilePathCommand import ShowKeyFilePathCommand
 from source.commands.GoToCurveMenuCommand import GoToCurveMenuCommand
 from source.commands.BackMenuCommand import BackMenuCommand
+from source.input_output_interface import get_user_input
 
 
 class MainMenu(Menu):

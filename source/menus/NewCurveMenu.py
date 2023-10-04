@@ -1,11 +1,12 @@
 """Меню добавления новой curve в keyfile."""
 from collections import namedtuple
 
-from source.menus.Menu import Menu, get_user_input
+from source.menus.Menu import Menu
 from source.Option import Option
 from source.commands.BackMenuCommand import BackMenuCommand
 from source.commands.NewCurveByRangeCommand import NewCurveByRangeCommand
 from source.commands.NewCurveByLineCommand import NewCurveByLineCommand
+from source.input_output_interface import get_user_input
 
 
 class NewCurveMenu(Menu):
