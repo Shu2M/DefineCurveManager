@@ -135,3 +135,21 @@ def try_get_user_required_type_input(msg, required_type: typing.Type) -> typing.
         return required_type(user_input)
     except ValueError:
         return user_input
+
+
+def get_input_data_by_line(max_args_in_line: int = 2) -> list[list]:
+    """Функция построчного ввода кривой.
+
+    Returns:
+        Список
+    """
+    curve_data = []
+    while True:
+        user_input = input().split()[:max_args_in_line]
+        if not user_input:
+            break
+        elif len(user_input) < max_args_in_line:
+            print('Ввод не соответсвует требуемой длине и не будет записан')
+            continue
+        curve_data.append(user_input)
+    return curve_data

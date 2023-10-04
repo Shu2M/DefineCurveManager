@@ -4,6 +4,7 @@ import re
 
 import settings
 from source.commands.Command import Command
+from source.input_output_interface import get_input_data_by_line
 
 
 HEADER = '*DEFINE_CURVE_TITLE\n'
@@ -47,7 +48,7 @@ class NewCurveByLineCommand(Command):
         )
         string_keyfile_data += AXIS_NAME_LINE
 
-        curve_data = get_curve_data()
+        curve_data = get_input_data_by_line()
         for a1, o1 in curve_data:
             string_keyfile_data += ' ' * (20 - len(a1)) + a1
             string_keyfile_data += ' ' * (20 - len(o1)) + o1
@@ -75,21 +76,3 @@ def set_define_curve_arguments(*args, offset=10) -> str:
     for arg in args:
         args_line += ' ' * (offset - len(str(arg))) + str(arg)
     return args_line + '\n'
-
-
-def get_curve_data() -> list:
-    """Функция построчного ввода кривой.
-
-    Returns:
-        Список вида [[a1_0, o1_0], [a1_1, o1_1], ...]
-    """
-    curve_data = []
-    while True:
-        user_input = input().split()[0:2]
-        if not user_input:
-            break
-        elif len(user_input) < 2:
-            print('Ввод не соответсвует требуемой длине и не будет записан')
-            continue
-        curve_data.append(user_input)
-    return curve_data
