@@ -40,7 +40,7 @@ class NewCurveByLineCommand(Command):
                     break
 
         string_keyfile_data += HEADER
-        string_keyfile_data += additional_data.name + '\n'
+        string_keyfile_data += additional_data.title + '\n'
         string_keyfile_data += PARAMETERS_LINE
         string_keyfile_data += set_define_curve_arguments(
             additional_data.lcid,

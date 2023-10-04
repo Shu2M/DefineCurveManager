@@ -20,5 +20,5 @@ class SetKeyFilePathCommand(Command):
         Returns:
             статус, результат команды
         """
-        settings.CONFIG_FILE.update(keyfile_path=additional_data)
+        settings.CONFIG_FILE.update(keyfile_path=additional_data.keyfile_path)
         return True, None

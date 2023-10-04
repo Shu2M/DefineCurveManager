@@ -1,12 +1,10 @@
 """Меню добавления новой curve в keyfile."""
-from collections import namedtuple
-
 from source.menus.Menu import Menu
 from source.Option import Option
 from source.commands.BackMenuCommand import BackMenuCommand
 from source.commands.NewCurveByRangeCommand import NewCurveByRangeCommand
 from source.commands.NewCurveByLineCommand import NewCurveByLineCommand
-from source.input_output_interface import get_user_input
+from source.input_output_interface import get_parameterized_user_input_function
 
 
 class NewCurveMenu(Menu):
@@ -19,13 +17,22 @@ class NewCurveMenu(Menu):
             1: Option(
                 name='По диапазону',
                 command=NewCurveByRangeCommand(),
-                prep_call=get_user_range,
+                prep_call=get_parameterized_user_input_function(
+                    title=('Имя новой curve', str),
+                    lcid=('id новой кривой', int),
+                    start=('Начало диапазона', int),
+                    stop=('Конец диапазона', int),
+                    step=('Шаг', int),
+                ),
                 success_message='Новая curve добавлена',
             ),
             2: Option(
                 name='Построчный ввод',
                 command=NewCurveByLineCommand(),
-                prep_call=get_new_curve_info,
+                prep_call=get_parameterized_user_input_function(
+                    title=('Имя новой curve', str),
+                    lcid=('id новой кривой', int),
+                ),
                 success_message='Новая curve добавлена',
             ),
             3: Option(
@@ -34,32 +41,3 @@ class NewCurveMenu(Menu):
                 success_message='',
             ),
         }
-
-
-def get_user_range():
-    """Функция возвращает необходимые данные для работы команды.
-
-    Returns:
-        Именованный кортеж с данными для работы конманды
-    """
-    Range = namedtuple('Range', 'name lcid start stop step')
-    return Range(
-        get_user_input('Имя новой curve'),
-        get_user_input('id новой кривой', required_type=int),
-        get_user_input('Начало диапазона', required_type=int),
-        get_user_input('Конец диапазона', required_type=int),
-        get_user_input('Шаг', required_type=int),
-    )
-
-
-def get_new_curve_info():
-    """Функция возвращает необходимые данные для работы команды.
-
-    Returns:
-        Именованный кортеж с данными для работы команды
-    """
-    CurveInfo = namedtuple('CurveInfo', 'name lcid')
-    return CurveInfo(
-        get_user_input('Имя новой curve'),
-        get_user_input('id новой кривой', required_type=int),
-    )
