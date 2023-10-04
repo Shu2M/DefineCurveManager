@@ -2,10 +2,10 @@
 
 Реализует логику работы с опциями в меню и подменю
 """
-import sys
 import typing
 
 from source.commands.Command import Command
+import source.input_output_interface as io_interface
 
 
 class Option(object):
@@ -43,7 +43,10 @@ class Option(object):
         )
 
         if status:
-            print_execute_result(self.success_message, command_result)
+            io_interface.print_execute_result(
+                self.success_message,
+                command_result,
+            )
 
     def __str__(self):
         """Дандер метод для конвертирования объектов в строку.
@@ -52,19 +55,3 @@ class Option(object):
             Строку с именем объекта Option из атрибута name
         """
         return self.name
-
-
-def print_execute_result(
-    message: str,
-    command_result: typing.Any,
-):
-    """Функция принта в консоль вывода успешно выполненной операции.
-
-    Args:
-        message: сообщение которое будет выведено в консоль
-        command_result: рузультат работы команды
-    """
-    sys.stdout.write(message.format(result=command_result))
-    sys.stdout.write('\n')
-    sys.stdout.write('\nНажмите ENTER для возврата в меню...')
-    sys.stdin.readline()
