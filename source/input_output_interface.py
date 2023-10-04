@@ -5,6 +5,7 @@
 import os
 import sys
 import typing
+from collections import namedtuple
 
 
 def print_execute_result(
@@ -68,6 +69,30 @@ def select_option(options: dict):
         )
     sys.stdout.write('\n')
     return options[option_key]
+
+
+def get_parameterized_user_input_function(**kwargs) -> typing.Callable:
+    """Возвращает функцию с параметризированным вводом.
+
+    Args:
+        **kwargs: словарь значений, где ключ - имя параметра, а
+        значение - кортеж вида (message, required type object)
+
+    Returns:
+        Функцию, требуемую для ввода данных для работы команды
+    """
+    def user_input_function():
+        """Функция возвращает необходимые данные для работы команды.
+
+        Returns:
+            Именованный кортеж с данными для работы конманды
+        """
+        UserInput = namedtuple('UserInput', kwargs.keys())
+        return UserInput._make([
+            get_user_input(msg, required_type=req_type)
+            for msg, req_type in kwargs.values()
+        ])
+    return user_input_function
 
 
 def get_user_input(label, required=True, required_type=str) -> typing.Any:
