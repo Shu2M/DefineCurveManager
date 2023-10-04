@@ -25,8 +25,8 @@ class NewCurveByRangeCommand(Command):
         добавляет новую curve по шаблону и переписывает файл
 
         Args:
-            additional_data: именованый кортеж с атрибутами start, stop,
-            step, name
+            additional_data: именованый кортеж с атрибутами name lcid start
+            stop step
 
         Returns:
             статус, результат команды
