@@ -23,7 +23,10 @@ class Keyword(object):
 
     def __str__(self):
         """Метод представления Keyword'а как строки (как в кейфайле)."""
-        return '*' + self.name + '\n' + self.data_below_name + '\n'
+        output_string = '*' + self.name + '\n'
+        if self.data_below_name:
+            output_string += self.data_below_name + '\n'
+        return output_string
 
 
 class Keyfile(object):
