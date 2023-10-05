@@ -5,19 +5,18 @@ import abc
 class KeywordAbstract(abc.ABC):
     """Абстрактный класс кейворда."""
 
+    def __str__(self):
+        """Метод представления Keyword'а как строки (как в кейфайле)."""
+        output_string = '*' + self.name + '\n'
+        if self.data_below_name:
+            output_string += self.data_below_name + '\n'
+        return output_string
+
     @abc.abstractmethod
     def __init__(self):
         """Метод инициализации объекта."""
         raise NotImplementedError(
             'Метод __init__ потомка класса KeywordAbstract должен быть '
-            'реализован'
-        )
-
-    @abc.abstractmethod
-    def __str__(self):
-        """Метод приведения объекта к типу str."""
-        raise NotImplementedError(
-            'Метод __str__ потомка класса KeywordAbstract должен быть '
             'реализован'
         )
 
