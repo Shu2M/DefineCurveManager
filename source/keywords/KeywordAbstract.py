@@ -12,6 +12,35 @@ class KeywordAbstract(abc.ABC):
             output_string += self.data_below_name + '\n'
         return output_string
 
+    @staticmethod
+    def format_param_value_to_string(
+            param_value: int | float,
+            string_cell_width: int = 10
+    ) -> str:
+        """Метод форматирует переданное значение параметра в строку.
+
+        Значение param_value форматируется в строку "        pv", где pv -
+        преобразованное в строковый тип значение param_value, а ширина
+        строковой "ячейки" (то есть то, сколько символов выделено под запись
+        значения параметра) регулируется значением string_cell_width
+
+        Args:
+            param_value: значение параметра, которое нужно преобразовать
+            string_cell_width: выделенное кол-во символов под запись параметра
+            (запись идет справа на лево)
+
+        Returns:
+            Строку с записанным значением параметра
+        """
+        param_value_string = str(param_value)
+        diff = string_cell_width - len(param_value_string)
+
+        if diff < 0:
+            param_value_string = param_value_string[:diff]
+            diff = 0
+
+        return ' ' * diff + param_value_string
+
     @abc.abstractmethod
     def __init__(self):
         """Метод инициализации объекта."""
