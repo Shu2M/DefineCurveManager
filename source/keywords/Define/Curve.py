@@ -1,8 +1,11 @@
 """Модуль реализации класса кейворда DEFINE_CURVE_(TITLE)."""
-from source.keywords.KeywordAbstract import KeywordAbstract
 import re
+from dataclasses import dataclass, field
+
+from source.keywords.KeywordAbstract import KeywordAbstract
 
 
+@dataclass
 class Curve(KeywordAbstract):
     """Класс кейворда DEFINE_CURVE_(TITLE)."""
 
@@ -20,11 +23,11 @@ class Curve(KeywordAbstract):
     offo: float = 0.0
     dattyp: int = 0
     lcint: int = 0
-    a1: list[int | float] = []
-    o1: list[int | float] = []
+    a1: list[int | float] = field(default_factory=list)
+    o1: list[int | float] = field(default_factory=list)
 
-    def __init__(self, keyword_string: str):
-        """Метод инициализации объекта."""
+    def set_from_string(self, keyword_string: str = None):
+        """Метод задания значений атрибутов по строке."""
         keyword_data_lines = keyword_string.strip('*\n').split('\n')
 
         self.title = keyword_data_lines[1] \

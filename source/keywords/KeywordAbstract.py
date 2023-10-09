@@ -67,8 +67,8 @@ class KeywordAbstract(abc.ABC):
         ))
 
     @abc.abstractmethod
-    def __init__(self, keyword_string: str):
-        """Метод инициализации объекта."""
+    def set_from_string(self, keyword_string: str):
+        """Метод задания значений атрибутов по строке."""
         raise NotImplementedError(
             'Метод __init__ потомка класса KeywordAbstract должен быть '
             'реализован'

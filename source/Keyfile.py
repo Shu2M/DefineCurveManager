@@ -98,9 +98,9 @@ class Keyfile(object):
         self.keywords = []
         for keyword_string in re.findall(r'(?<=\*)([^*]*)', keyfile):
             keyword_name = keyword_string.split('\n')[0].strip('*')
-            self.keywords.append(
-                KEYWORDS_DISPATCH_DICT.get(
+            keyword = KEYWORDS_DISPATCH_DICT.get(
                     keyword_name,
                     KeywordDefault,
-                )(keyword_string),
-            )
+                )()
+            keyword.set_from_string(keyword_string)
+            self.keywords.append(keyword)

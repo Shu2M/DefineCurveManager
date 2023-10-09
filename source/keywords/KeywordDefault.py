@@ -3,27 +3,25 @@
 Нужна для чтения из кейфайла объектов кейворд, у которых еще нет полноценной
 реализации
 """
+from dataclasses import dataclass
+
 from source.keywords.KeywordAbstract import KeywordAbstract
 
 
+@dataclass
 class KeywordDefault(KeywordAbstract):
     """Дефолтная реализация класса KeywordAbstract."""
 
-    def __init__(self, keyword_string: str):
-        """Метод инициализации класса.
+    keyword_string: str = ''
+
+    def set_from_string(self, keyword_string: str):
+        """Метод задания значений атрибутов по строке.
 
         Args:
             keyword_string: строка, содержащая имя кейворда и информацию
             о нем (как в кейфайле)
         """
         self.keyword_string = keyword_string
-
-    def __str__(self):
-        """Метод представления Keyword'а как строки (как в кейфайле)."""
-        output_string = '*' + self.name + '\n'
-        if self.data_below_name:
-            output_string += self.data_below_name + '\n'
-        return output_string
 
     @property
     def name(self) -> str:
