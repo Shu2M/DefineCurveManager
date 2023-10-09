@@ -29,7 +29,7 @@ class ExtendCurveByLineCommand(Command):
                     if keyword.lcid == additional_data.lcid:
                         curve_data = get_input_data_by_line()
                         for a1, o1 in curve_data:
-                            keyword.a1.append(float(a1))
+                            keyword.a1.append(a1)
                             keyword.o1.append(o1)
                         break
         return True, None
