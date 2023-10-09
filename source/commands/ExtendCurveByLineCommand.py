@@ -9,7 +9,7 @@ from source.input_output_interface import get_input_data_by_line
 
 
 class ExtendCurveByLineCommand(Command):
-    """Комманда добавления новой curve по построчному вводу."""
+    """Комманда добавления curve по построчному вводу."""
 
     def execute(
         self,
