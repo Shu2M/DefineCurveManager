@@ -3,6 +3,7 @@ from source.menus.Menu import Menu
 from source.Option import Option
 from source.commands.BackMenuCommand import BackMenuCommand
 from source.commands.ExtendCurveByRangeCommand import ExtendCurveByRangeCommand
+from source.commands.ExtendCurveByLineCommand import ExtendCurveByLineCommand
 from source.input_output_interface import get_parameterized_user_input_function
 
 
@@ -24,7 +25,15 @@ class ExtendCurveMenu(Menu):
                 ),
                 success_message='Curve дополнена',
             ),
-            4: Option(
+            2: Option(
+                name='Построчный ввод',
+                command=ExtendCurveByLineCommand(),
+                prep_call=get_parameterized_user_input_function(
+                    lcid=('id кривой', int),
+                ),
+                success_message='Curve дополнена',
+            ),
+            3: Option(
                 name='Назад',
                 command=BackMenuCommand(),
                 success_message='',
