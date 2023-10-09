@@ -137,19 +137,38 @@ def try_get_user_required_type_input(msg, required_type: typing.Type) -> typing.
         return user_input
 
 
-def get_input_data_by_line(max_args_in_line: int = 2) -> list[list]:
+def get_input_data_by_line(
+        max_args_in_line: int = 2,
+        required_type: typing.Callable = float
+) -> list[list]:
     """Функция построчного ввода кривой.
 
+    Args:
+        max_args_in_line: максимальное кол-во значений в строке
+        required_type: требуемый тип ввода
+
     Returns:
-        Список
+        Список списков значений построчного ввода в требуемом типе
     """
     curve_data = []
     while True:
         user_input = input().split()[:max_args_in_line]
+
         if not user_input:
             break
         elif len(user_input) < max_args_in_line:
             print('Ввод не соответсвует требуемой длине и не будет записан')
             continue
+
+        try:
+            for ind, value in enumerate(user_input):
+                user_input[ind] = required_type(value)
+        except ValueError:
+            print(
+                'Ввод не соответсвует требуемому типу {type_name} и не '
+                'будет записан'.format(type_name=required_type.__name__)
+            )
+            continue
+
         curve_data.append(user_input)
     return curve_data
