@@ -1,5 +1,6 @@
 """Абстрактный класс для определения объектов кейвордов."""
 import abc
+import re
 
 
 class KeywordAbstract(abc.ABC):
@@ -15,7 +16,7 @@ class KeywordAbstract(abc.ABC):
     @staticmethod
     def format_param_value_to_string(
             param_value: int | float,
-            string_cell_width: int = 10
+            string_cell_width: int = 10,
     ) -> str:
         """Метод форматирует переданное значение параметра в строку.
 
@@ -41,8 +42,32 @@ class KeywordAbstract(abc.ABC):
 
         return ' ' * diff + param_value_string
 
+    @staticmethod
+    def _get_param_value_from_string(
+            param_value_string: str,
+            string_cell_width: int = 10,
+            param_value_string_length: int = 80,
+    ) -> list[str]:
+        """Метод для разбиения единой строки на подстроки со значениями.
+
+        Args:
+            param_value_string: единая строка
+            string_cell_width: по сколько символов разбивать строку
+            param_value_string_length: какая длина должна быть у принимаемой
+            строки с параметрами
+
+        Returns:
+            Список строк, в которых находятся значения парамтеров
+        """
+        if len(param_value_string) < param_value_string_length:
+            param_value_string += ' ' * (param_value_string_length - len(param_value_string))
+        return list(map(
+            lambda value_str: value_str.replace(' ', ''),
+            re.findall('.{,' + str(string_cell_width) + '}', param_value_string),
+        ))
+
     @abc.abstractmethod
-    def __init__(self):
+    def __init__(self, keyword_string: str):
         """Метод инициализации объекта."""
         raise NotImplementedError(
             'Метод __init__ потомка класса KeywordAbstract должен быть '
@@ -51,7 +76,7 @@ class KeywordAbstract(abc.ABC):
 
     @property
     @abc.abstractmethod
-    def name(self):
+    def name(self) -> str:
         """Свойство, возвращающее имя кейворда."""
         raise NotImplementedError(
             'Свойство name потомка класса KeywordAbstract должно быть '
@@ -60,7 +85,7 @@ class KeywordAbstract(abc.ABC):
 
     @property
     @abc.abstractmethod
-    def data_below_name(self):
+    def data_below_name(self) -> str:
         """Свойство, возвращающее данные, ниже имени кейворда, как строку."""
         raise NotImplementedError(
             'Свойство data_below_name потомка класса KeywordAbstract должно '

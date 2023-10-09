@@ -4,4 +4,5 @@ from source.keywords import *
 
 KEYWORDS_DISPATCH_DICT = types.MappingProxyType({
     'DEFINE_CURVE': DefineCurve,
+    'DEFINE_CURVE_TITLE': DefineCurve,
 })

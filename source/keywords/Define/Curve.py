@@ -1,11 +1,16 @@
 """Модуль реализации класса кейворда DEFINE_CURVE_(TITLE)."""
 from source.keywords.KeywordAbstract import KeywordAbstract
+import re
 
 
 class Curve(KeywordAbstract):
     """Класс кейворда DEFINE_CURVE_(TITLE)."""
 
     default_name = 'DEFINE_CURVE'
+    param_header_1 = '    lcid      sidr       sfa       sfo      ' \
+                     'offa      offo    dattyp     lcint'
+    param_header_2 = '                a1                  o1'
+
     title: str = ''
     lcid: int = 0
     sidr: int = 0
@@ -18,9 +23,49 @@ class Curve(KeywordAbstract):
     a1: list[int | float] = []
     o1: list[int | float] = []
 
-    def __init__(self):
+    def __init__(self, keyword_string: str):
         """Метод инициализации объекта."""
-        pass
+        keyword_data_lines = keyword_string.strip('*\n').split('\n')
+
+        self.title = keyword_data_lines[1] \
+            if not re.match(r'\$#', keyword_data_lines[1]) else 'noname curve'
+
+        for data in re.findall(r'(?<=\$#)([^$#]*)', keyword_string):
+
+            if re.match(self.__class__.param_header_1, data):
+                params = self._get_param_value_from_string(
+                    param_value_string=data.strip('\n').split('\n')[1],
+                    string_cell_width=10,
+                    param_value_string_length=80,
+                )
+                self.lcid = int(params[0]) \
+                    if params[0] else self.__class__.lcid
+                self.sidr = int(params[1]) \
+                    if params[1] else self.__class__.sidr
+                self.sfa = float(params[2]) \
+                    if params[2] else self.__class__.sfa
+                self.sfo = float(params[3]) \
+                    if params[3] else self.__class__.sfo
+                self.offa = float(params[4]) \
+                    if params[4] else self.__class__.offa
+                self.offo = float(params[5]) \
+                    if params[5] else self.__class__.offo
+                self.dattyp = int(params[6]) \
+                    if params[6] else self.__class__.dattyp
+                self.lcint = int(params[7]) \
+                    if params[7] else self.__class__.lcint
+
+            elif re.match(self.__class__.param_header_2, data):
+                self.a1 = []
+                self.o1 = []
+                for line in data.strip('\n').split('\n')[1:]:
+                    params = self._get_param_value_from_string(
+                        param_value_string=line,
+                        string_cell_width=20,
+                        param_value_string_length=40,
+                    )
+                    self.a1.append(float(params[0]) if params[0] else 0.0)
+                    self.o1.append(float(params[1]) if params[1] else 0.0)
 
     @property
     def name(self):
@@ -38,8 +83,7 @@ class Curve(KeywordAbstract):
         if self.title:
             result += self.title + '\n'
 
-        result += '$#    lcid      sidr       sfa       sfo      offa      ' \
-                  'offo    dattyp     lcint\n'
+        result += '$#' + self.__class__.param_header_1 + '\n'
         for param_value in [
             self.lcid,
             self.sidr,
@@ -56,7 +100,7 @@ class Curve(KeywordAbstract):
             )
         result += '\n'
 
-        result += '$#                a1                  o1\n'
+        result += '$#' + self.__class__.param_header_2 + '\n'
         for a1, o1 in zip(self.a1, self.o1):
             result += self.format_param_value_to_string(
                 param_value=a1,

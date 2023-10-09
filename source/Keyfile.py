@@ -4,29 +4,9 @@
 """
 import re
 
-
-class Keyword(object):
-    """Вспомогательный класс с которым работает класс Keyfile."""
-
-    def __init__(self, keyword_string: str):
-        """Метод инициализации класса.
-
-        Args:
-            keyword_string: строка, содержащая имя кейворда и информацию
-            о нем (как в кейфайле)
-        """
-        keyword_list_string = keyword_string.split('\n')
-        self.name = keyword_list_string[0].strip('*')
-        self.data_below_name = '\n'.join(
-            keyword_list_string[1:],
-        ).strip() if len(keyword_list_string) > 1 else ''
-
-    def __str__(self):
-        """Метод представления Keyword'а как строки (как в кейфайле)."""
-        output_string = '*' + self.name + '\n'
-        if self.data_below_name:
-            output_string += self.data_below_name + '\n'
-        return output_string
+from source.keywords.KeywordAbstract import KeywordAbstract
+from source.keywords.KeywordDefault import KeywordDefault
+from source.keywords.keywords_dispatch_dict import KEYWORDS_DISPATCH_DICT
 
 
 class Keyfile(object):
@@ -80,7 +60,7 @@ class Keyfile(object):
             for keyword in self.keywords:
                 new_keyfile.write(str(keyword))
 
-    def add(self, keyword, pos: int = -1):
+    def add(self, new_keyword: KeywordAbstract, pos: int = -1):
         """Метод добавления новго кейворда в список кейвордов.
 
         Принимаемый keyword должен иметь строковый атрибут name и
@@ -88,13 +68,12 @@ class Keyfile(object):
         представление всех данных кейворда
 
         Args:
-            keyword: объект Keyword, который нужно добавить
+            new_keyword: новый объект Keyword, который нужно добавить
             pos: позиция нового объекта кейворда в списке кейвордов
         """
-        new_keyword = Keyword(str(keyword))
         self.keywords.insert(pos, new_keyword)
 
-    def pop(self, pos: int = -2) -> Keyword:
+    def pop(self, pos: int = -2) -> KeywordAbstract:
         """Метод удаления объекта из списка кейвордов.
 
         Работает аналогично методу pop у списков
@@ -111,11 +90,17 @@ class Keyfile(object):
         """Метод парсит кейфайл, передаваемый в качестве строки.
 
         Парсит файл, разделяя его на отдельные блоки кейфордов, после чего
-        заносит их в класс Keyfile
+        заносит их в класс Keyfile как отдельные объекты Keyword
 
         Args:
             keyfile: keyfile как цельная строка
         """
         self.keywords = []
         for keyword_string in re.findall(r'(?<=\*)([^*]*)', keyfile):
-            self.keywords.append(Keyword(keyword_string))
+            keyword_name = keyword_string.split('\n')[0].strip('*')
+            self.keywords.append(
+                KEYWORDS_DISPATCH_DICT.get(
+                    keyword_name,
+                    KeywordDefault,
+                )(keyword_string),
+            )
