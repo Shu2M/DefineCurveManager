@@ -1,4 +1,4 @@
-"""Команда добавления новой curve по указанному диапазону."""
+"""Команда дополнения curve по указанному диапазону."""
 import typing
 import re
 
@@ -8,7 +8,7 @@ from source.Keyfile import Keyfile
 
 
 class ExtendCurveByRangeCommand(Command):
-    """Комманда добавления новой curve по указанному диапазону."""
+    """Комманда дополнения curve по указанному диапазону."""
 
     def execute(
         self,
@@ -16,11 +16,8 @@ class ExtendCurveByRangeCommand(Command):
     ):
         """Метод исполнения команды.
 
-        Читает исходный файл и записывает все строки кроме *END, после
-        добавляет новую curve по шаблону и переписывает файл
-
         Args:
-            additional_data: именованый кортеж с атрибутами name lcid start
+            additional_data: именованный кортеж с атрибутами lcid start
             stop step
 
         Returns:
@@ -28,7 +25,6 @@ class ExtendCurveByRangeCommand(Command):
         """
         with Keyfile(settings.CONFIG_FILE.read('keyfile_path')) as keyfile:
             for keyword in keyfile.keywords:
-                print(keyword.name, bool(re.match(r'DEFINE_CURVE', keyword.name)))
                 if re.match(r'DEFINE_CURVE', keyword.name):
                     if keyword.lcid == additional_data.lcid:
                         for a1, o1 in enumerate(range(
