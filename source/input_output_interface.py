@@ -172,3 +172,22 @@ def get_input_data_by_line(
 
         curve_data.append(user_input)
     return curve_data
+
+
+def get_valid_path(label: str) -> str:
+    """Функция ввода валидного пути файла.
+
+    Args:
+        label: строка с сообщением для пользователя
+
+    Returns:
+        Строку пути существующего файла
+    """
+    path = get_user_input(label)
+    while not os.path.exists(path):
+        sys.stdout.write('\033[F\033[K')
+        path = get_user_input(
+            'Файла по указанному пути не существует. '
+            '{label}'.format(label=label),
+        )
+    return path
