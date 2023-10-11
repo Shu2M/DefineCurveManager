@@ -38,7 +38,7 @@ class ExtendCurveMenu(Menu):
                 name='По set shell',
                 command=ExtendCurveBySetCommand(),
                 prep_call=get_parameterized_user_input_function(
-                    lcid=('id новой кривой', int),
+                    lcid=('id кривой', int),
                 ),
                 success_message='{result}',
             ),
