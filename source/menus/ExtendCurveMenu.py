@@ -4,6 +4,7 @@ from source.Option import Option
 from source.commands.BackMenuCommand import BackMenuCommand
 from source.commands.ExtendCurveByRangeCommand import ExtendCurveByRangeCommand
 from source.commands.ExtendCurveByLineCommand import ExtendCurveByLineCommand
+from source.commands.ExtendCurveBySetCommand import ExtendCurveBySetCommand
 from source.input_output_interface import get_parameterized_user_input_function
 
 
@@ -34,6 +35,14 @@ class ExtendCurveMenu(Menu):
                 success_message='Curve дополнена',
             ),
             3: Option(
+                name='По set shell',
+                command=ExtendCurveBySetCommand(),
+                prep_call=get_parameterized_user_input_function(
+                    lcid=('id новой кривой', int),
+                ),
+                success_message='{result}',
+            ),
+            4: Option(
                 name='Назад',
                 command=BackMenuCommand(),
                 success_message='',
