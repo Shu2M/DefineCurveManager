@@ -47,7 +47,7 @@ class ShellList(KeywordAbstract):
                 )
                 self.sid = int(params[0]) \
                     if params[0] else self.__class__.sid
-                self.da1 = int(params[1]) \
+                self.da1 = float(params[1]) \
                     if params[1] else self.__class__.da1
                 self.da2 = float(params[2]) \
                     if params[2] else self.__class__.da2
