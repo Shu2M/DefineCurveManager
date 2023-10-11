@@ -27,11 +27,12 @@ class ExtendCurveByRangeCommand(Command):
             for keyword in keyfile.keywords:
                 if re.match(r'DEFINE_CURVE', keyword.name):
                     if keyword.lcid == additional_data.lcid:
+                        start = int(keyword.a1[-1]) + 1
                         for a1, o1 in enumerate(range(
                                 additional_data.start,
                                 additional_data.stop + 1,
                                 additional_data.step,
-                        ), start=1):
+                        ), start=start):
                             keyword.a1.append(a1)
                             keyword.o1.append(o1)
                         break
