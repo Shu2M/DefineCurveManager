@@ -4,6 +4,7 @@ from source.Option import Option
 from source.commands.BackMenuCommand import BackMenuCommand
 from source.commands.RewriteCurveByRangeCommand import RewriteCurveByRangeCommand
 from source.commands.RewriteCurveByLineCommand import RewriteCurveByLineCommand
+from source.commands.RewriteCurveBySetCommand import RewriteCurveBySetCommand
 from source.input_output_interface import get_parameterized_user_input_function
 
 
@@ -34,6 +35,14 @@ class RewriteCurveMenu(Menu):
                 success_message='Curve перезаписана',
             ),
             3: Option(
+                name='По set shell',
+                command=RewriteCurveBySetCommand(),
+                prep_call=get_parameterized_user_input_function(
+                    lcid=('id кривой', int),
+                ),
+                success_message='{result}',
+            ),
+            4: Option(
                 name='Назад',
                 command=BackMenuCommand(),
                 success_message='',
