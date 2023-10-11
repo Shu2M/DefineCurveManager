@@ -24,7 +24,7 @@ class ExtendCurveMenu(Menu):
                     stop=('Конец диапазона', int),
                     step=('Шаг', int),
                 ),
-                success_message='Curve дополнена',
+                success_message='{result}',
             ),
             2: Option(
                 name='Построчный ввод',
@@ -32,7 +32,7 @@ class ExtendCurveMenu(Menu):
                 prep_call=get_parameterized_user_input_function(
                     lcid=('id кривой', int),
                 ),
-                success_message='Curve дополнена',
+                success_message='{result}',
             ),
             3: Option(
                 name='По set shell',

@@ -23,6 +23,8 @@ class RewriteCurveByLineCommand(Command):
         Returns:
             статус, результат команды
         """
+        result = 'Не удалось найти curve по указанному ' \
+                 'lcid={lcid}'.format(lcid=additional_data.lcid)
         with Keyfile(settings.CONFIG_FILE.read('keyfile_path')) as keyfile:
             for keyword in keyfile.keywords:
                 if re.match(r'DEFINE_CURVE', keyword.name):
@@ -33,5 +35,7 @@ class RewriteCurveByLineCommand(Command):
                         for a1, o1 in curve_data:
                             keyword.a1.append(a1)
                             keyword.o1.append(o1)
+                        result = 'curve с lcid={lcid} ' \
+                                 'перезаписана'.format(lcid=additional_data.lcid)
                         break
-        return True, None
+        return True, result
