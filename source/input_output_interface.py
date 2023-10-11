@@ -139,17 +139,21 @@ def try_get_user_required_type_input(msg, required_type: typing.Type) -> typing.
 
 def get_input_data_by_line(
         max_args_in_line: int = 2,
-        required_type: typing.Callable = float
+        required_type: typing.Callable = int,
+        msg: str = None,
 ) -> list[list]:
     """Функция построчного ввода кривой.
 
     Args:
         max_args_in_line: максимальное кол-во значений в строке
         required_type: требуемый тип ввода
+        msg: выводимое сообщение
 
     Returns:
         Список списков значений построчного ввода в требуемом типе
     """
+    if msg:
+        print(msg)
     curve_data = []
     while True:
         user_input = input().split()[:max_args_in_line]
