@@ -67,8 +67,16 @@ class Curve(KeywordAbstract):
                         string_cell_width=20,
                         param_value_string_length=40,
                     )
-                    self.a1.append(float(params[0]) if params[0] else 0.0)
-                    self.o1.append(float(params[1]) if params[1] else 0.0)
+                    self.a1.append(
+                        int(params[0])
+                        if params[0].isnumeric() else float(params[0])
+                        if params[0] else 0.0
+                    )
+                    self.o1.append(
+                        int(params[1])
+                        if params[1].isnumeric() else float(params[1])
+                        if params[1] else 0.0
+                    )
 
     @property
     def name(self):
