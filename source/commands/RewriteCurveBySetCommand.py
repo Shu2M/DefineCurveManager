@@ -31,8 +31,9 @@ class RewriteCurveBySetCommand(Command):
             path = settings.CONFIG_FILE.read('keyfile_path')
         else:
             path = get_path_by_file_explorer(
-                title='Выберете keyfile с нужным set',
+                title='Выбор keyfile',
                 filetypes=(('Keyfiles', '*.k'),),
+                message='Выберете keyfile с нужным set',
             )
             if not path:
                 return True, 'Кейфайл не выбран'
