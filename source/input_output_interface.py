@@ -6,6 +6,9 @@ import os
 import sys
 import typing
 from collections import namedtuple
+from tkinter import filedialog, Tk
+
+import settings
 
 
 def print_execute_result(
@@ -195,3 +198,33 @@ def get_valid_path(label: str) -> str:
             '{label}'.format(label=label),
         )
     return path
+
+
+def get_path_by_file_explorer(
+        title: str = 'Open a file',
+        initialdir: str = settings.BASE_DIR,
+        filetypes: tuple[tuple[str, str]] = (('All files', '*.*'),),
+) -> str:
+    """Функция открывает файловый проводник и возвращает путь.
+
+    Открывает файловый проводник и дает пользователю возможность выбрать
+    файл с требуемым расширением
+
+    Args:
+        title: заголовок окна менеждера файлов
+        initialdir: директория, в которой откроется проводник
+        filetypes: типы файлов, которые сможет выбрать пользователь
+
+    Returns:
+        Строку с путем
+    """
+    root = Tk()
+    root.withdraw()
+
+    filepath = filedialog.askopenfilename(
+        title=title,
+        initialdir=initialdir,
+        filetypes=filetypes,
+    )
+
+    return filepath
