@@ -204,6 +204,7 @@ def get_path_by_file_explorer(
         title: str = 'Open a file',
         initialdir: str = settings.BASE_DIR,
         filetypes: tuple[tuple[str, str]] = (('All files', '*.*'),),
+        message: str = ''
 ) -> str:
     """Функция открывает файловый проводник и возвращает путь.
 
@@ -214,12 +215,16 @@ def get_path_by_file_explorer(
         title: заголовок окна менеждера файлов
         initialdir: директория, в которой откроется проводник
         filetypes: типы файлов, которые сможет выбрать пользователь
+        message: сообщение, которое увидит пользователь в консоли
 
     Returns:
         Строку с путем
     """
     root = Tk()
     root.withdraw()
+
+    if message:
+        print(message)
 
     filepath = filedialog.askopenfilename(
         title=title,

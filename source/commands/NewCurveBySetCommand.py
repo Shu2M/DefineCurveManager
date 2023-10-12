@@ -6,7 +6,8 @@ import settings
 from source.commands.Command import Command
 from source.Keyfile import Keyfile
 from source.keywords.keywords_dispatch_dict import KEYWORDS_DISPATCH_DICT
-from source.input_output_interface import get_user_input, get_valid_path
+from source.input_output_interface import get_user_input, \
+    get_path_by_file_explorer
 
 
 class NewCurveBySetCommand(Command):
@@ -35,7 +36,12 @@ class NewCurveBySetCommand(Command):
         ).strip() in ['Y', 'y', 'yes', '']:
             path = settings.CONFIG_FILE.read('keyfile_path')
         else:
-            path = get_valid_path('Путь до кейфайла с set shell')
+            path = get_path_by_file_explorer(
+                title='Выберете keyfile с нужным set',
+                filetypes=(('Keyfiles', '*.k'),),
+            )
+            if not path:
+                return True, 'Кейфайл не выбран'
 
         sid = get_user_input('sid', required_type=int)
 
