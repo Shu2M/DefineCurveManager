@@ -3,6 +3,7 @@ import typing
 
 import settings
 from source.commands.Command import Command
+from source.input_output_interface import get_path_by_file_explorer
 
 
 class SetKeyFilePathCommand(Command):
@@ -20,5 +21,13 @@ class SetKeyFilePathCommand(Command):
         Returns:
             статус, результат команды
         """
-        settings.CONFIG_FILE.update(keyfile_path=additional_data.keyfile_path)
-        return True, None
+        keyfile_path = get_path_by_file_explorer(
+            title='Выбор keyfile',
+            filetypes=(('Keyfiles', '*.k'),),
+        )
+
+        if not keyfile_path:
+            return True, 'Кейфайл не выбран'
+
+        settings.CONFIG_FILE.update(keyfile_path=keyfile_path)
+        return True, 'Задан новый кейфайл'

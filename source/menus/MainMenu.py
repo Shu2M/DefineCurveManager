@@ -5,7 +5,6 @@ from source.commands.SetKeyfilePathCommand import SetKeyFilePathCommand
 from source.commands.ShowKeyfilePathCommand import ShowKeyFilePathCommand
 from source.commands.GoToCurveMenuCommand import GoToCurveMenuCommand
 from source.commands.BackMenuCommand import BackMenuCommand
-from source.input_output_interface import get_parameterized_user_input_function
 
 
 class MainMenu(Menu):
@@ -18,10 +17,7 @@ class MainMenu(Menu):
             1: Option(
                 name='Задать расположение k файла',
                 command=SetKeyFilePathCommand(),
-                prep_call=get_parameterized_user_input_function(
-                    keyfile_path=('Введите путь k файла', str)
-                ),
-                success_message='k файл загружен',
+                success_message='{result}',
             ),
             2: Option(
                 name='Показать расположение выбранного k файла',
