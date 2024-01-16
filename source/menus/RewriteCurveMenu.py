@@ -35,7 +35,7 @@ class RewriteCurveMenu(Menu):
                 success_message='{result}',
             ),
             3: Option(
-                name='По set shell',
+                name='По set',
                 command=RewriteCurveBySetCommand(),
                 prep_call=get_parameterized_user_input_function(
                     lcid=('id кривой', int),

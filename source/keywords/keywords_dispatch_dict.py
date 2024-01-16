@@ -7,4 +7,6 @@ KEYWORDS_DISPATCH_DICT = types.MappingProxyType({
     'DEFINE_CURVE_TITLE': DefineCurve,
     'SET_SHELL_LIST': SetShellList,
     'SET_SHELL_LIST_TITLE': SetShellList,
+    'SET_SOLID': SetSolid,
+    'SET_SOLID_TITLE': SetSolid,
 })

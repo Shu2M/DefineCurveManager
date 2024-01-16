@@ -37,7 +37,7 @@ class NewCurveMenu(Menu):
                 success_message='Новая curve добавлена',
             ),
             3: Option(
-                name='По set shell',
+                name='По set',
                 command=NewCurveBySetCommand(),
                 prep_call=get_parameterized_user_input_function(
                     title=('Имя новой curve', str),
