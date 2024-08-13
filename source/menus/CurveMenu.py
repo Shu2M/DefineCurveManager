@@ -34,12 +34,6 @@ class CurveMenu(Menu):
             4: Option(
                 name='Найти пересечение сетов',
                 command=SetIntersectionCommand(),
-                prep_call=get_parameterized_user_input_function(
-                    sid1=('id 1 сета', int),
-                    sid2=('id 2 сета', int),
-                    title=('Имя новой curve', str),
-                    lcid=('id новой кривой', int),
-                ),
                 success_message='{result}',
             ),
             5: Option(
