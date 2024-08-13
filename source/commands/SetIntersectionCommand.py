@@ -58,7 +58,10 @@ class SetIntersectionCommand(Command):
             lcid=lcid,
         )
 
-        for a1, o1 in zip(all_set1_ids, intersection_list):
+        a1o1 = [[a1, o1] for a1, o1 in zip(all_set1_ids, intersection_list)]
+        a1o1.sort(key=lambda line: line[0])
+
+        for a1, o1 in a1o1:
             new_curve.a1.append(a1)
             new_curve.o1.append(o1)
 
