@@ -5,6 +5,8 @@ from source.commands.GoToExtendCurveMenuCommand import GoToExtendCurveMenuComman
 from source.commands.GoToNewCurveMenuCommand import GoToNewCurveMenuCommand
 from source.commands.GoToRewriteCurveMenuCommand import GoToRewriteCurveMenuCommand
 from source.commands.BackMenuCommand import BackMenuCommand
+from source.commands.SetIntersectionCommand import SetIntersectionCommand
+from source.input_output_interface import get_parameterized_user_input_function
 
 
 class CurveMenu(Menu):
@@ -30,6 +32,17 @@ class CurveMenu(Menu):
                 success_message='',
             ),
             4: Option(
+                name='Найти пересечение сетов',
+                command=SetIntersectionCommand(),
+                prep_call=get_parameterized_user_input_function(
+                    sid1=('id 1 сета', int),
+                    sid2=('id 2 сета', int),
+                    title=('Имя новой curve', str),
+                    lcid=('id новой кривой', int),
+                ),
+                success_message='{result}',
+            ),
+            5: Option(
                 name='Назад',
                 command=BackMenuCommand(),
                 success_message='',
