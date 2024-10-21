@@ -6,6 +6,7 @@ from source.commands.GoToNewCurveMenuCommand import GoToNewCurveMenuCommand
 from source.commands.GoToRewriteCurveMenuCommand import GoToRewriteCurveMenuCommand
 from source.commands.BackMenuCommand import BackMenuCommand
 from source.commands.SetIntersectionCommand import SetIntersectionCommand
+from source.commands.Show_Elements_and_nodes import Show_elements
 from source.input_output_interface import get_parameterized_user_input_function
 
 
@@ -37,6 +38,11 @@ class CurveMenu(Menu):
                 success_message='{result}',
             ),
             5: Option(
+                name='Разбиение модели на области',
+                command=Show_elements(),
+                success_message='{result}',
+            ),
+            6: Option(
                 name='Назад',
                 command=BackMenuCommand(),
                 success_message='',

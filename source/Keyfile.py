@@ -61,7 +61,7 @@ class Keyfile(object):
                 new_keyfile.write(str(keyword))
 
     def add(self, new_keyword: KeywordAbstract, pos: int = -1):
-        """Метод добавления новго кейворда в список кейвордов.
+        """Метод добавления нового кейворда в список кейвордов.
 
         Принимаемый keyword должен иметь строковый атрибут name и
         реализованный метод __str__(), возвращающий строковое

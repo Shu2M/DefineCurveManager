@@ -1,7 +1,7 @@
 """Абстрактный класс для определения объектов кейвордов."""
 import abc
 import re
-
+from typing import List, Union
 
 class KeywordAbstract(abc.ABC):
     """Абстрактный класс кейворда."""
@@ -45,26 +45,39 @@ class KeywordAbstract(abc.ABC):
     @staticmethod
     def _get_param_value_from_string(
             param_value_string: str,
-            string_cell_width: int = 10,
+            string_cell_width: Union[int, List[int]] = 10,
             param_value_string_length: int = 80,
-    ) -> list[str]:
+    ) -> List[str]:
         """Метод для разбиения единой строки на подстроки со значениями.
 
         Args:
             param_value_string: единая строка
-            string_cell_width: по сколько символов разбивать строку
-            param_value_string_length: какая длина должна быть у принимаемой
-            строки с параметрами
+            string_cell_width: длина подстрок или список длин подстрок
+            param_value_string_length: длина строки с параметрами
 
         Returns:
-            Список строк, в которых находятся значения парамтеров
+            Список строк, в которых находятся значения параметров
         """
         if len(param_value_string) < param_value_string_length:
             param_value_string += ' ' * (param_value_string_length - len(param_value_string))
-        return list(map(
-            lambda value_str: value_str.replace(' ', ''),
-            re.findall('.{,' + str(string_cell_width) + '}', param_value_string),
-        ))
+
+        result = []
+
+        if isinstance(string_cell_width, int):
+            # Если string_cell_width — это целое число, используем его для фиксированной длины подстрок
+            pattern = f'.{{,{string_cell_width}}}'
+            result = re.findall(pattern, param_value_string)
+        elif isinstance(string_cell_width, list):
+            # Если string_cell_width — это список, последовательно разбиваем строку на части с указанными длинами
+            position = 0
+            for width in string_cell_width:
+                result.append(param_value_string[
+                              position:position + width].strip())  # Используем strip для удаления лишних пробелов
+                position += width
+        else:
+            raise TypeError("string_cell_width должна быть int или списком ints")
+
+        return result
 
     @abc.abstractmethod
     def set_from_string(self, keyword_string: str):

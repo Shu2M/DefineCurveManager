@@ -5,3 +5,5 @@
 from source.keywords.Define.Curve import Curve as DefineCurve
 from source.keywords.Set.ShellList import ShellList as SetShellList
 from source.keywords.Set.Solid import Solid as SetSolid
+from source.keywords.Element.Shell import ElementShell
+from source.keywords.Node.Node import Node

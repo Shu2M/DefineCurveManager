@@ -9,4 +9,6 @@ KEYWORDS_DISPATCH_DICT = types.MappingProxyType({
     'SET_SHELL_LIST_TITLE': SetShellList,
     'SET_SOLID': SetSolid,
     'SET_SOLID_TITLE': SetSolid,
+    'ELEMENT_SHELL': ElementShell,
+    'NODE': Node,
 })

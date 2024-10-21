@@ -1,0 +1,26 @@
+$# LS-PrePost command file created by LS-PrePost(R) V4.7.7 - 17Feb2020 -64bit-Window
+$# Created on Oct-21-2024 (11:45:15)
+open keyword "M:\Work\PLAST\UserMM\DefineCurveManager\S02T_ASTM-D_3039.k"
+Message 1
+Message 0
+genselect target part
+partdata select 1
+clearid part
+partdata select 0
+setshell
+genselect clear
+setshell off
+setshell readlist 4
+setshell show  4
+genselect clear
+setshell off
+setshell readlist 3
+setshell show  3
+genselect clear
+setshell off
+setshell readlist 4
+setshell show  4
+genselect clear
+setshell off
+setshell readlist 3
+setshell show  3
