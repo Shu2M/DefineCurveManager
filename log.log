@@ -1,0 +1,555 @@
+2024-08-30 10:09:43,002 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-08-30 10:10:16,735 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 11:31:11,337 - [INFO] - (loop45) - Действие <<Найти пересечение сетов>> выполнено
+2024-08-30 11:31:15,917 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 11:31:30,120 - [INFO] - (loop45) - Действие <<Создать новую>> выполнено
+2024-08-30 11:33:04,510 - [INFO] - (loop45) - Действие <<По set>> выполнено
+2024-08-30 11:33:05,448 - [INFO] - (loop45) - Действие <<Создать новую>> выполнено
+2024-08-30 14:51:20,540 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-08-30 15:26:47,939 - [INFO] - (loop45) - Действие <<По set>> выполнено
+2024-08-30 15:26:49,360 - [INFO] - (loop45) - Действие <<Создать новую>> выполнено
+2024-08-30 15:26:55,233 - [ERROR] - (loop37) - Действие (Найти пересечение сетов) прервалось на ошибке: list index out of range
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\SetIntersectionCommand.py", line 39, in execute
+    all_set1_ids = get_all_set_ids(full_keyword_set_name, sid1)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\SetIntersectionCommand.py", line 83, in get_all_set_ids
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Element\Shell.py", line 66, in set_from_string
+    self.n8.append(int(params[9]) if params[9] else 0)
+                                     ~~~~~~^^^
+IndexError: list index out of range
+2024-08-30 15:26:56,770 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 15:34:47,703 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 15:34:48,825 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 15:35:16,362 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: list index out of range
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Element\Shell.py", line 66, in set_from_string
+    self.n8.append(int(params[9]) if params[9] else 0)
+                                     ~~~~~~^^^
+IndexError: list index out of range
+2024-08-30 15:35:22,207 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 15:39:30,580 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: Can't instantiate abstract class Node without an implementation for abstract methods 'data_below_name', 'name', 'set_from_string'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 101, in _set_keywords_from_string
+    keyword = KEYWORDS_DISPATCH_DICT.get(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Can't instantiate abstract class Node without an implementation for abstract methods 'data_below_name', 'name', 'set_from_string'
+2024-08-30 15:39:32,093 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 15:40:40,388 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: unsupported operand type(s) for +: 'method' and 'str'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 38, in __exit__
+    self.write(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 61, in write
+    new_keyfile.write(str(keyword))
+                      ^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\KeywordAbstract.py", line 13, in __str__
+    output_string += self.data_below_name + '\n'
+                     ~~~~~~~~~~~~~~~~~~~~~^~~~~~
+TypeError: unsupported operand type(s) for +: 'method' and 'str'
+2024-08-30 15:40:41,141 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 15:44:20,530 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 15:44:29,552 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 15:47:43,208 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 15:47:46,184 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 15:48:20,802 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-08-30 16:04:17,168 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: list index out of range
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 38, in __exit__
+    self.write(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 61, in write
+    new_keyfile.write(str(keyword))
+                      ^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\KeywordAbstract.py", line 12, in __str__
+    if self.data_below_name:
+       ^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Define\Curve.py", line 117, in data_below_name
+    if self.a1[0] == 0:  # индекс, напротив которого должно стоять кол-во элементов (если он есть, то...)
+       ~~~~~~~^^^
+IndexError: list index out of range
+2024-08-30 16:04:18,929 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 16:04:26,894 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 16:04:32,188 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-08-30 16:05:24,268 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 16:09:34,283 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 16:10:06,470 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: [Errno 2] No such file or directory: 'result.txt'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements.py", line 34, in execute
+    with open('result.txt') as file:
+         ^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'result.txt'
+2024-08-30 16:10:08,558 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 16:10:14,871 - [INFO] - (loop45) - Действие <<Показать расположение выбранного k файла>> выполнено
+2024-08-30 21:13:16,650 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 21:13:18,417 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 21:14:18,098 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: invalid literal for int() with base 10: '0.0'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_Nodes.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 34, in set_from_string
+    self.x.append(int(params[1]) if params[1] else 0)
+                  ^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '0.0'
+2024-08-30 21:14:29,467 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 21:18:11,698 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 21:18:13,258 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 21:32:53,888 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 21:32:55,998 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 21:33:46,994 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: invalid literal for int() with base 10: '.00'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 34, in set_from_string
+    self.y.append(int(params[2]) if params[2] else 0)
+                  ^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '.00'
+2024-08-30 21:33:49,014 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 21:36:09,985 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 21:36:53,348 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 21:36:56,151 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 21:37:05,309 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: invalid literal for int() with base 10: '.00'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 34, in set_from_string
+    self.y.append(int(params[2]) if params[2] else 0)
+                  ^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '.00'
+2024-08-30 21:37:06,616 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 21:40:14,710 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: invalid literal for int() with base 10: '.00'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 34, in set_from_string
+    self.y.append(int(params[2]) if params[2] else 0)
+                  ^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '.00'
+2024-08-30 21:40:18,005 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 21:50:20,175 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 21:50:23,000 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 21:56:07,591 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 21:56:09,172 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 22:22:49,092 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: invalid literal for int() with base 10: '.00'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 34, in set_from_string
+    self.y.append(int(params[2]) if params[2] else 0)
+                  ^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '.00'
+2024-08-30 22:22:50,005 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 22:23:04,284 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 22:23:25,672 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 22:38:51,797 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: invalid literal for int() with base 10: '0.0'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 34, in set_from_string
+    self.y.append(int(params[2]) if params[2] else 0)
+                  ^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '0.0'
+2024-08-30 22:38:52,828 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 22:41:54,681 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: invalid literal for int() with base 10: '10.00.00.000'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 32, in set_from_string
+    self.nid.append(int(params[0]) if params[0] else 0)
+                    ^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '10.00.00.000'
+2024-08-30 22:41:55,987 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 23:00:01,888 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: Can't instantiate abstract class Node without an implementation for abstract methods 'data_below_name', 'name'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 101, in _set_keywords_from_string
+    keyword = KEYWORDS_DISPATCH_DICT.get(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Can't instantiate abstract class Node without an implementation for abstract methods 'data_below_name', 'name'
+2024-08-30 23:00:02,918 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 23:39:33,965 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: invalid literal for int() with base 10: '0.0'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 34, in set_from_string
+    self.y.append(int(params[2]) if params[2] else 0)
+                  ^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '0.0'
+2024-08-30 23:39:35,455 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 23:40:04,519 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 23:40:43,862 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 23:41:37,273 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 23:41:39,155 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 23:41:44,181 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 23:41:45,556 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 23:43:12,082 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: invalid literal for int() with base 10: '0.0'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 33, in set_from_string
+    self.x.append(int(params[1]) if params[1] else 0)
+                  ^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '0.0'
+2024-08-30 23:43:13,341 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 23:53:04,801 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 23:53:06,199 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-30 23:54:25,291 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-30 23:54:27,013 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-31 00:16:16,898 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-31 00:16:25,155 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-31 00:18:18,562 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: KeywordAbstract._get_param_value_from_string() got an unexpected keyword argument 'string_cell_width'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Element\Shell.py", line 31, in set_from_string
+    params = self._get_param_value_from_string(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: KeywordAbstract._get_param_value_from_string() got an unexpected keyword argument 'string_cell_width'
+2024-08-31 00:18:20,096 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-31 00:22:03,477 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-31 00:22:06,372 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-31 00:23:01,627 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: invalid literal for int() with base 10: '0.0'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 30, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 33, in set_from_string
+    self.x.append(int(params[1]) if params[1] else 0)
+                  ^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '0.0'
+2024-08-31 00:23:04,614 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-31 00:28:56,723 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-31 00:28:59,295 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-31 00:33:39,975 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-31 00:33:41,511 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-31 00:36:40,851 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: could not convert string to float: '0.00.0'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 31, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 35, in set_from_string
+    self.z.append(float(params[3]) if params[3] else 0)
+                  ^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: '0.00.0'
+2024-08-31 00:36:41,419 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-31 00:48:23,933 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: could not convert string to float: '0.00.0'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 31, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 35, in set_from_string
+    self.z.append(float(params[3]) if params[3] else 0)
+                  ^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: '0.00.0'
+2024-08-31 00:48:25,169 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-08-31 00:48:30,355 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-08-31 00:48:31,915 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 21:32:04,844 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-01 21:33:31,286 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 21:37:58,073 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-09-01 21:47:11,494 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-01 21:47:13,654 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 21:56:16,924 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-01 21:56:18,899 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 21:56:54,673 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: invalid literal for int() with base 10: '0.0'
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 50, in execute
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 33, in __enter__
+    self.read(self.path)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 51, in read
+    self._set_keywords_from_string(keyfile.read())
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Keyfile.py", line 105, in _set_keywords_from_string
+    keyword.set_from_string(keyword_string)
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\keywords\Node\Node.py", line 36, in set_from_string
+    self.tc.append(float(params[4]) if params[4] else 0)
+                   ^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '0.0'
+2024-09-01 21:56:56,463 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 21:57:03,678 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-01 21:57:05,210 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 21:58:28,971 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-01 21:58:30,402 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 22:00:12,748 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-01 22:03:59,517 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 22:14:10,517 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-01 22:14:11,986 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 22:14:33,167 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-01 22:14:34,451 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 22:15:18,619 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-01 22:15:49,693 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-01 22:15:51,300 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 22:18:41,111 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-01 22:18:42,602 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 22:18:54,503 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-09-01 22:19:26,243 - [INFO] - (loop45) - Действие <<Найти пересечение сетов>> выполнено
+2024-09-01 23:32:46,591 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 23:33:36,032 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: 'int' object is not subscriptable
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 56, in execute
+    node_ids = get_element_nodes(element_id, elements_keyword)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 184, in get_element_nodes
+    if element[0] == element_id:  # Сравниваем с eid
+       ~~~~~~~^^^
+TypeError: 'int' object is not subscriptable
+2024-09-01 23:33:38,884 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 23:43:48,182 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: 'int' object is not subscriptable
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 56, in execute
+    node_ids = get_element_nodes(element_id, elements_keyword)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 184, in get_element_nodes
+    if element[0] == element_id:  # Сравниваем с eid
+       ~~~~~~~^^^
+TypeError: 'int' object is not subscriptable
+2024-09-01 23:43:49,489 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-01 23:57:32,592 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 58, in execute
+    avg_coords = calculate_average_coordinates(node_ids, nodes_keyword)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 202, in calculate_average_coordinates
+    if coord:
+       ^^^^^
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2024-09-01 23:57:34,798 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-02 00:01:31,237 - [ERROR] - (loop37) - Действие (Вывод элементов) прервалось на ошибке: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DefineCurveManager-main\source\commands\Show_Elements_and_nodes.py", line 59, in execute
+    if avg_coords:
+       ^^^^^^^^^^
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2024-09-02 00:01:33,682 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-02 00:05:43,354 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-02 00:37:43,721 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-09-02 00:38:08,355 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
+2024-09-02 00:39:52,951 - [INFO] - (loop45) - Действие <<Curve>> выполнено

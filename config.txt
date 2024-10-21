@@ -1,0 +1,2 @@
+keyfile_path=M:/Work/PLAST/UserMM/DefineCurveManager-main/S02T_ASTM-D_3039.k
+logger_file_path=
