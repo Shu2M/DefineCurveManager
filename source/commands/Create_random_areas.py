@@ -2,6 +2,7 @@
 import typing
 import re
 import math
+import random
 import numpy as np
 from scipy.spatial import distance
 
@@ -12,7 +13,7 @@ from source.keywords.keywords_dispatch_dict import KEYWORDS_DISPATCH_DICT
 from source.input_output_interface import get_user_input, \
     get_path_by_file_explorer
 
-class Show_elements(Command):
+class Create_random_areas(Command):
     """Команда вывода записи элементов."""
 
     def execute(
@@ -34,60 +35,99 @@ class Show_elements(Command):
         full_keyword_set_name = 'SET_' + chosen_keyword_set_name.upper()
         full_keyword_ELEMENT_name = 'ELEMENT_SHELL'
         full_keyword_NODE_name = 'NODE'
-        sid1 = get_user_input('sid1', required_type=int)
-        sid2 = get_user_input('sid2', required_type=int)
+        number_sample = get_user_input('Number of samples in the model', required_type=int)
+        sid1 = get_user_input('First sample set number', required_type=int)
+        number_areas = get_user_input('Number of areas', required_type=int)
         title = get_user_input('Имя новой кривой', required_type=str)
         lcid = get_user_input('id новой кривой', required_type=str)
 
-        all_set1_ids = get_all_set_ids(full_keyword_set_name, sid1)
-        all_set2_ids = get_all_set_ids(full_keyword_set_name, sid2)
-        # Загрузка всех элементов и узлов
+        # Load elements and nodes
         elements_keyword = load_elements(full_keyword_ELEMENT_name)
         nodes_keyword = load_nodes(full_keyword_NODE_name)
 
-        if not all_set1_ids:
-            return True, 'В указанном файле не нашлось set {set_name} c ' \
-                         'sid={sid}'.format(sid=sid1, set_name=chosen_keyword_set_name)
-        elif not all_set2_ids:
-            return True, 'В указанном файле не нашлось set {set_name} c ' \
-                         'sid={sid}'.format(sid=sid2, set_name=chosen_keyword_set_name)
+        # Initialize dictionaries to hold data
+        samples_set_coords = {}  # Average coordinates for each sid1 set
+        sid2_elements_dict = {}  # Elements in each sid2 set
+        sid2_coords_dict = {}  # Average coordinates for each sid2 set
+        sorted_sid2_elements_dict = {}  # Sequential numbering for sid2 elements
 
-        # Определение средних координат для элементов из sid1
-        set1_coords = {}
-        for element_id in all_set1_ids:
-            node_ids = get_element_nodes(element_id, elements_keyword)
-            avg_coords = calculate_average_coordinates(node_ids, nodes_keyword)
-            if avg_coords is not None and avg_coords.size > 0:
-                set1_coords[element_id] = avg_coords
+        # Initialize lists to collect curve data
+        a1_list = []
+        o1_list = []
 
-        # Определение средних координат для элементов из sid2
-        set2_coords = {}
-        for element_id in all_set2_ids:
-            node_ids = get_element_nodes(element_id, elements_keyword)
-            avg_coords = calculate_average_coordinates(node_ids, nodes_keyword)
-            if avg_coords is not None and avg_coords.size > 0:
-                set2_coords[element_id] = avg_coords
+        # Initialize the global sequential number counter
+        sequential_number = 1
 
-        # Определение порядковых номеров элементов из sid2
-        sorted_sid2_elements = {element_id: idx + 1 for idx, element_id in enumerate(set2_coords.keys())}
+        # Loop over samples
+        for sample_index in range(number_sample):
+            current_sid = sid1 + sample_index
+            sid2_current = sample_index + 1 # Corresponding sid2 SID
 
-        # Поиск ближайших соответствий между элементами из sid1 и sid2
-        element_mappings = {}
-        for element_id1, coords1 in set1_coords.items():
-            closest_element_id = find_closest_element(coords1, set2_coords)
-            element_mappings[element_id1] = sorted_sid2_elements[closest_element_id]
+            # Get all element IDs for the current sid1 set
+            all_set_ids = get_all_set_ids(full_keyword_set_name, current_sid)
 
+            if not all_set_ids:
+                return True, f'No set {chosen_keyword_set_name} found with sid={current_sid}'
+
+            # Calculate average coordinates for elements in the current sid1 set
+            set_coords = {}
+            for element_id in all_set_ids:
+                if element_id not in set_coords:
+                    node_ids = get_element_nodes(element_id, elements_keyword)
+                    avg_coords = calculate_average_coordinates(node_ids, nodes_keyword)
+                    if avg_coords is not None and avg_coords.size > 0:
+                        set_coords[element_id] = avg_coords
+            samples_set_coords[current_sid] = set_coords
+
+            # Randomly select elements for the corresponding sid2 set
+            if len(all_set_ids) < number_areas:
+                return True, f'Not enough elements in set {chosen_keyword_set_name} with sid={current_sid} to create {number_areas} areas'
+
+            sid2_elements = np.random.choice(all_set_ids, size=number_areas, replace=False).tolist()
+            sid2_elements_dict[sid2_current] = sid2_elements
+
+            # Reuse average coordinates from sid1 for sid2 elements
+            sid2_set_coords = {}
+            for element_id in sid2_elements:
+                avg_coords = set_coords.get(element_id)
+                if avg_coords is not None:
+                    sid2_set_coords[element_id] = avg_coords
+            sid2_coords_dict[sid2_current] = sid2_set_coords
+
+            # Assign sequential numbers to elements in the sid2 set
+            sorted_element_ids = sorted(sid2_set_coords.keys())
+            sorted_sid2_elements = {}
+            for element_id in sorted_element_ids:
+                sorted_sid2_elements[element_id] = sequential_number
+                sequential_number += 1
+            sorted_sid2_elements_dict[sid2_current] = sorted_sid2_elements
+
+            # Find closest correspondences between elements in sid1 and sid2
+            set1_coords = samples_set_coords[current_sid]
+            set2_coords = sid2_set_coords  # Directly use sid2_set_coords
+            sorted_sid2_elements = sorted_sid2_elements_dict[sid2_current]
+
+            for element_id1, coords1 in set1_coords.items():
+                closest_element_id = find_closest_element(coords1, set2_coords)
+                if closest_element_id is not None:
+                    sequential_num = sorted_sid2_elements[closest_element_id]
+                    a1_list.append(element_id1)
+                    o1_list.append(sequential_num)
+        # Сортировка данных кривой по первой колонке (a1)
+        sorted_curve_data = sorted(zip(a1_list, o1_list), key=lambda x: x[0])
+
+        # Инициализация кривой
         new_curve = KEYWORDS_DISPATCH_DICT['DEFINE_CURVE_TITLE'](
             title=title,
             lcid=lcid,
         )
 
-        # Заполнение кривой данными
-        for a1, o1 in sorted(element_mappings.items()):
+        # Заполнение кривой отсортированными данными
+        for a1, o1 in sorted_curve_data:
             new_curve.a1.append(a1)
             new_curve.o1.append(o1)
 
-        # Добавление новой кривой в файл ключей
+        # Add the new curve to the keyfile
         with Keyfile(settings.CONFIG_FILE.read('keyfile_path')) as keyfile:
             keyfile.add(new_curve)
 
@@ -228,5 +268,3 @@ def find_closest_element(avg_coords, set2_coords):
             closest_element_id = element_id
 
     return closest_element_id
-
-

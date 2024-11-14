@@ -553,3 +553,65 @@ ValueError: The truth value of an array with more than one element is ambiguous.
 2024-09-02 00:37:43,721 - [INFO] - (loop45) - Действие <<Curve>> выполнено
 2024-09-02 00:38:08,355 - [INFO] - (loop45) - Действие <<Вывод элементов>> выполнено
 2024-09-02 00:39:52,951 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-11-12 11:37:26,118 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-11-12 11:39:19,007 - [ERROR] - (loop37) - Действие (Разбиение модели на области) прервалось на ошибке: list index out of range
+Traceback (most recent call last):
+  File "M:\Work\PLAST\UserMM\DEV\DefineCurveManager\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "M:\Work\PLAST\UserMM\DEV\DefineCurveManager\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+                             ^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DEV\DefineCurveManager\source\commands\Show_Elements_and_nodes.py", line 42, in execute
+    all_set1_ids = get_all_set_ids(full_keyword_set_name, sid1)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DEV\DefineCurveManager\source\commands\Show_Elements_and_nodes.py", line 106, in get_all_set_ids
+    with Keyfile(path) as keyfile:
+  File "M:\Work\PLAST\UserMM\DEV\DefineCurveManager\source\Keyfile.py", line 38, in __exit__
+    self.write(self.path)
+  File "M:\Work\PLAST\UserMM\DEV\DefineCurveManager\source\Keyfile.py", line 61, in write
+    new_keyfile.write(str(keyword))
+                      ^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DEV\DefineCurveManager\source\keywords\KeywordAbstract.py", line 12, in __str__
+    if self.data_below_name:
+       ^^^^^^^^^^^^^^^^^^^^
+  File "M:\Work\PLAST\UserMM\DEV\DefineCurveManager\source\keywords\Define\Curve.py", line 117, in data_below_name
+    if self.a1[0] == 0:  # индекс, напротив которого должно стоять кол-во элементов (если он есть, то...)
+       ~~~~~~~^^^
+IndexError: list index out of range
+2024-11-12 11:39:20,797 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-11-12 12:17:36,949 - [INFO] - (loop45) - Действие <<Разбиение модели на области>> выполнено
+2024-11-12 12:18:37,682 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-11-12 12:43:42,307 - [INFO] - (loop45) - Действие <<Разбиение модели на области>> выполнено
+2024-11-12 12:43:57,377 - [INFO] - (loop45) - Действие <<Случайное разбиение модели на области>> выполнено
+2024-11-12 12:44:00,041 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-11-13 10:42:36,929 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-11-13 10:48:32,596 - [INFO] - (loop45) - Действие <<Разбиение модели на области>> выполнено
+2024-11-13 10:53:39,381 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-11-13 11:03:12,983 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-11-13 11:05:50,486 - [INFO] - (loop45) - Действие <<Разбиение модели на области>> выполнено
+2024-11-13 11:41:10,193 - [INFO] - (loop45) - Действие <<Случайное разбиение модели на области>> выполнено
+2024-11-13 11:41:11,512 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-11-13 11:42:43,771 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-11-13 11:51:41,015 - [INFO] - (loop45) - Действие <<Случайное разбиение модели на области>> выполнено
+2024-11-13 11:51:43,343 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-11-13 11:54:23,615 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-11-13 11:57:03,623 - [INFO] - (loop45) - Действие <<Случайное разбиение модели на области>> выполнено
+2024-11-13 12:29:44,806 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-11-13 12:45:30,142 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-11-13 12:46:31,479 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-11-13 12:49:43,837 - [ERROR] - (loop37) - Действие (Случайное разбиение модели на области) прервалось на ошибке: name 'sid2_base' is not defined
+Traceback (most recent call last):
+  File "C:\Users\bykov.g\Desktop\DEV\DefineCurveManager\source\menus\Menu.py", line 27, in loop
+    selected_option.execute()
+  File "C:\Users\bykov.g\Desktop\DEV\DefineCurveManager\source\Option.py", line 41, in execute
+    status, command_result = self.command.execute(
+  File "C:\Users\bykov.g\Desktop\DEV\DefineCurveManager\source\commands\Create_random_areas.py", line 64, in execute
+    sid2_current = sid2_base + sample_index  # Corresponding sid2 SID
+NameError: name 'sid2_base' is not defined
+2024-11-13 12:50:24,219 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-11-13 12:56:27,744 - [INFO] - (loop45) - Действие <<Случайное разбиение модели на области>> выполнено
+2024-11-13 13:29:52,371 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-11-13 13:32:23,150 - [INFO] - (loop45) - Действие <<Случайное разбиение модели на области>> выполнено
+2024-11-13 13:44:10,247 - [INFO] - (loop45) - Действие <<Curve>> выполнено
+2024-11-13 13:44:25,798 - [INFO] - (loop45) - Действие <<Задать расположение k файла>> выполнено
+2024-11-13 13:47:00,461 - [INFO] - (loop45) - Действие <<Случайное разбиение модели на области>> выполнено

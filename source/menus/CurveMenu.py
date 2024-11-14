@@ -6,7 +6,8 @@ from source.commands.GoToNewCurveMenuCommand import GoToNewCurveMenuCommand
 from source.commands.GoToRewriteCurveMenuCommand import GoToRewriteCurveMenuCommand
 from source.commands.BackMenuCommand import BackMenuCommand
 from source.commands.SetIntersectionCommand import SetIntersectionCommand
-from source.commands.Show_Elements_and_nodes import Show_elements
+from source.commands.Create_areas import Create_areas
+from source.commands.Create_random_areas import Create_random_areas
 from source.input_output_interface import get_parameterized_user_input_function
 
 
@@ -39,10 +40,15 @@ class CurveMenu(Menu):
             ),
             5: Option(
                 name='Разбиение модели на области',
-                command=Show_elements(),
+                command=Create_areas(),
                 success_message='{result}',
             ),
             6: Option(
+                name='Случайное разбиение модели на области',
+                command=Create_random_areas(),
+                success_message='{result}',
+            ),
+            7: Option(
                 name='Назад',
                 command=BackMenuCommand(),
                 success_message='',
