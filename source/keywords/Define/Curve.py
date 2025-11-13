@@ -91,9 +91,11 @@ class Curve(KeywordAbstract):
         """Свойство, возвращающее данные, ниже имени кейворда, как строку."""
         result = ''
 
+        # Заголовок с title (если есть)
         if self.title:
             result += self.title + '\n'
 
+        # Строка с параметрами lcid, sidr, sfa, sfo, offa, offo, dattyp, lcint
         result += '$#' + self.__class__.param_header_1 + '\n'
         for param_value in [
             self.lcid,
@@ -111,23 +113,10 @@ class Curve(KeywordAbstract):
             )
         result += '\n'
 
+        # Заголовок для точек кривой
         result += '$#' + self.__class__.param_header_2 + '\n'
 
-        # Добавляем строку с индексом 0 и значением равным кол-ву элементов в кривой
-        if self.a1[0] == 0:  # индекс, напротив которого должно стоять кол-во элементов (если он есть, то...)
-            self.o1[0] = self.a1[-1]  # пересчитываем кол-во элементов кривой, без учета элемента с индексом 0
-        else:  # если такого индекса нет, то просто добавляем его
-            result += self.format_param_value_to_string(
-                    param_value=0,
-                    string_cell_width=20,
-                )
-            result += self.format_param_value_to_string(
-                param_value=self.a1[-1],
-                string_cell_width=20,
-            )
-            result += '\n'
-
-        # Пишем остальные значения кривой
+        # Печатаем только реальные пары (a1, o1), без служебной строки "0 N"
         for a1, o1 in zip(self.a1, self.o1):
             result += self.format_param_value_to_string(
                 param_value=a1,
