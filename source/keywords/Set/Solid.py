@@ -7,7 +7,7 @@ from source.keywords.KeywordAbstract import KeywordAbstract
 
 @dataclass
 class Solid(KeywordAbstract):
-    """Класс кейворда SET_SHELL_LIST_(TITLE)."""
+    """Класс кейворда *SET_SOLID_TITLE."""
 
     default_name = 'SET_SOLID'
     param_header_1 = '     sid    solver'

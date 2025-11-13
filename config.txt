@@ -1,2 +1,2 @@
-keyfile_path=P:/Work/dev/S02T_ASTM-D_3039_24.k
+keyfile_path=M:/Dev/Dev_2/DefineCurveManager/0+90_v6.k
 logger_file_path=

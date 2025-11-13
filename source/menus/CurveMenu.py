@@ -8,6 +8,7 @@ from source.commands.BackMenuCommand import BackMenuCommand
 from source.commands.SetIntersectionCommand import SetIntersectionCommand
 from source.commands.Create_areas import Create_areas
 from source.commands.Create_random_areas import Create_random_areas
+from source.commands.SetFiberRatio import SetFiberRatioCommand
 from source.input_output_interface import get_parameterized_user_input_function
 
 
@@ -49,6 +50,11 @@ class CurveMenu(Menu):
                 success_message='{result}',
             ),
             7: Option(
+                name='Присвоение объемного соотношения волокна',
+                command=SetFiberRatioCommand(),
+                success_message='{result}',
+            ),
+            8: Option(
                 name='Назад',
                 command=BackMenuCommand(),
                 success_message='',
